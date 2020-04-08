@@ -103,7 +103,6 @@ void handleRoot() {                         // When URI / is requested, send a w
   server.send(200, "text/html", "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=2\"><p>ON - Time " + String(segundos_encendido) + " Seconds</p><p>OFF - Time " + String(segundos_apagado) + " Seconds</p><form action=\"/onUP\" method=\"POST\"><input type=\"submit\" value=\"Add one Sec to ON\"></form><form action=\"/onDOWN\" method=\"POST\"><input type=\"submit\" value=\"Remove one Sec to ON\"></form><form action=\"/offUP\" method=\"POST\"><input type=\"submit\" value=\"Add one Sec to OFF\"></form><form action=\"/offDOWN\" method=\"POST\"><input type=\"submit\" value=\"Remove one Sec to OFF\"></form>");
 }
 
-
 void onUP() {                          
   segundos_encendido++;                     // Add a second
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
@@ -112,6 +111,8 @@ void onUP() {
 
 void onDOWN() {                          
   segundos_encendido--;                     // Remove a second
+  if(segundos_encendido < 0)
+     segundos_encendido = 0;
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
@@ -124,6 +125,8 @@ void offUP() {
 
 void offDOWN() {                          
   segundos_apagado--;                     // Remove a second
+  if(segundos_apagado < 0)
+     segundos_apagado = 0;
   server.sendHeader("Location","/");        // Add a header to respond with a new location for the browser to go to the home page again
   server.send(303);                         // Send it back to the browser with an HTTP status 303 (See Other) to redirect
 }
