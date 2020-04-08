@@ -14,8 +14,13 @@ This is a small project that anyone can make. To build your own Respirator. The 
 
 ### **Software Instructions**
 * Download and install the arduino IDE
-* Dlownload and open the code
+* Download and open the code
 * Setup the variable "segundos_encendido" to the desired activation time in seconds.
 * Setup the variable "segundos_apagado" to the desired stop time in seconds.
 * Upload the code.
 * Conect the air pump to the circuit.
+
+### **WIFI Version Instructions**
+* After setup the "segundos_apagado" variable you most setup the APSSID and the APPSK.
+* After connect all you can connect to the Access Point and go to http://192.168.4.1 on the browser.
+* Add or remove time to the ON or OFF period.
